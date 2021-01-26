@@ -31,7 +31,7 @@ import session.ParnikiFacade;
     "/listParniki",
     "/listConsumers",
     "/buyProductForm",
-    "/buyParnik"
+    "/buyProduct"
     
 })
 public class MyServlet extends HttpServlet {
@@ -125,11 +125,36 @@ public class MyServlet extends HttpServlet {
                 request.getRequestDispatcher("/WEB-INF/buyProductForm.jsp").forward(request, response);
                 break;
                 
-            case "/buyParnik":
+            case "/buyProduct":
                 String parnikId = request.getParameter("parnikId");
                 parnik = parnikFacade.find(Long.parseLong(parnikId));
                 String consumerId = request.getParameter("consumerId");
                 consumer = consumerFacade.find(Long.parseLong(consumerId));
+                
+                if ("".equals(parnikId) || parnikId == null 
+                        || "".equals(consumerId) || consumerId == null){
+                    
+                    request.setAttribute("info","Заполните все поля!");
+                    listConsumers = consumerFacade.findAll();
+                    request.setAttribute("listConsumers", listConsumers);
+                    listParniki = parnikFacade.findAll();
+                    request.setAttribute("listParniki", listParniki);
+                    request.getRequestDispatcher("/WEB-INF/buyProductForm.jsp").forward(request, response);
+                    break;
+                }
+                if (consumer.getMoney()<parnik.getPrice()) {
+                    request.setAttribute("info", "Недостаточно средств");
+                    listConsumers = consumerFacade.findAll();
+                    request.setAttribute("listConsumers", listConsumers);
+                    listParniki = parnikFacade.findAll();
+                    request.setAttribute("listParniki", listParniki);
+                    request.getRequestDispatcher("/WEB-INF/buyProductForm.jsp").forward(request, response);
+                    break;
+                }
+                consumer.setMoney(consumer.getMoney()-(parnik.getPrice()));
+                consumerFacade.edit(consumer);
+                parnik.setAmount(parnik.getAmount()-1);
+                parnikFacade.edit(parnik);
                 request.setAttribute("info","Товар куплен");
                 request.getRequestDispatcher("/index.jsp").forward(request, response);
                 break;

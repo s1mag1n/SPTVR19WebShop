@@ -4,6 +4,7 @@
     Author     : Elena
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -13,11 +14,11 @@
     </head>
     <body>
         <h1>Купить товар</h1>
-        <form action="buyParnik" method="POST">
+        <form action="buyProduct" method="POST">
             <select name="parnikId">
                 <option value="">Выберите парник</option>
                 <c:forEach var="parnik" items="${listParniki}">
-                    <option value="${book.id}"><p>Название: ${parnik.name};</p> <p>Размер: ${parnik.size}м;</p> <p>Количество: ${parnik.amount}шт.;</p> <p>Цена: ${parnik.price}€.</p><br></option>
+                    <option value="${parnik.id}"><p>Название: ${parnik.name};</p> <p>Размер: ${parnik.size}м;</p> <p>Количество: ${parnik.amount}шт.;</p> <p>Цена: ${parnik.price}€.</p><br></option>
                 </c:forEach>
             </select>
             <br>
