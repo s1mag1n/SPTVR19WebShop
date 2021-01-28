@@ -1,7 +1,7 @@
 <%-- 
-    Document   : addParnikForm
+    Document   : addProductForm
     Created on : 14.01.2021, 9:10:32
-    Author     : Elena
+    Author     : user
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -10,13 +10,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Добавить парник</title>
+        <title>Добавить товар</title>
     </head>
     <body>
-        <h1>Добавить парник</h1>
-        <form action="createParnik" method="POST">
+        <h1>Добавить товар</h1>
+        <form action="createProduct" method="POST">
             Название: <input type="text" name="name" value="${name}"><br>
-            Размер: <input type="text" name="size" value="${size}"><br>
             Количество: <input type="text" name="amount" value="${amount}"><br>
             Цена: <input type="text" name="price" value="${price}"><br>
             <input type="submit" name="submit" value="Добавить"><br>

@@ -7,7 +7,7 @@ package entity;
 
 /**
  *
- * @author Elena
+ * @author user
  */
 interface EntityInterface {
     

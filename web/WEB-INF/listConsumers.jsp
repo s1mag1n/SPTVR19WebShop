@@ -1,7 +1,7 @@
 <%-- 
     Document   : listConsumers
     Created on : 14.01.2021, 16:05:29
-    Author     : Elena
+    Author     : user
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

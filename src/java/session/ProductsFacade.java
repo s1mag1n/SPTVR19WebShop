@@ -5,17 +5,17 @@
  */
 package session;
 
-import entity.Parniki;
+import entity.Products;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 /**
  *
- * @author Elena
+ * @author user
  */
 @Stateless
-public class ParnikiFacade extends AbstractFacade<Parniki> {
+public class ProductsFacade extends AbstractFacade<Products> {
 
     @PersistenceContext(unitName = "SPTVR19WebShopPU")
     private EntityManager em;
@@ -25,8 +25,8 @@ public class ParnikiFacade extends AbstractFacade<Parniki> {
         return em;
     }
 
-    public ParnikiFacade() {
-        super(Parniki.class);
+    public ProductsFacade() {
+        super(Products.class);
     }
     
 }
